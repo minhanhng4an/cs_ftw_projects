@@ -1,1 +1,1 @@
-# cs_ftw_notes
+# CoderSchool FTW - Cheetah - Projects
