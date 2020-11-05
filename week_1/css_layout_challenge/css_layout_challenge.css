@@ -1,0 +1,313 @@
+body {
+  color: white;
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+}
+
+section {
+  border: 1px solid black;
+  height: 400px;
+  margin-bottom: 30px;
+}
+
+h1 {
+  color: #e74c3c;
+  font-size: 30px;
+}
+
+strong {
+  color: #2980b9;
+  font-size: 18px;
+}
+
+.bg-black {
+  background-color: black;
+}
+
+.bg-dark {
+  background-color: #38393a;
+}
+
+.bg-gray {
+  background-color: grey;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+}
+
+.mr {
+  margin-right: 17px;
+}
+
+/* Challenge 1 */
+
+#c1 {
+  position: relative;
+}
+
+#c1 .div1 {
+  position: absolute;
+  left: 0px;
+}
+
+#c1 .div2 {
+  position: absolute;
+  right: 120px;
+}
+
+#c1 .div3 {
+  position: absolute;
+  right: 0px;
+}
+
+/* Challenge 2 */
+
+#c2 {
+  display: flex;
+  flex-direction: column;
+}
+
+#c2 > div {
+  display: flex;
+  width: 100vw;
+}
+
+#c2 .flex2 {
+  justify-content: center;
+}
+
+#c2 .flex3 {
+  justify-content: flex-end;
+}
+
+/* Challenge 3 */
+#c3 .div1 {
+  width: 200px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#c3 .div2 {
+  margin-top: 25px;
+  margin-left: 50px;
+}
+
+/* Challenge 4 */
+
+#c4 .div2 {
+  position: relative;
+  bottom: 50px;
+  left: 50px;
+}
+
+/* Challenge 5 */
+#c5 > div {
+  display: flex;
+  width: 100vw;
+}
+
+#c5 .flex1 {
+  justify-content: flex-end;
+}
+
+#c5 .flex2 {
+  justify-content: center;
+}
+
+/* Challenge 6 */
+#c6 {
+  display: flex;
+  height: 400px;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+#c6 .div1 {
+  position: relative;
+  width: 60%;
+  height: 40%;
+  padding: 0;
+}
+
+#c6 .div2 {
+  position: absolute;
+  bottom: 0px;
+}
+
+#c6 .div3 {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+/* Challenge 7 */
+#c7 .div1 {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+#c7 .div2 {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+
+/* Challenge 8 */
+#c8 .div1 {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+#c8 .div2 {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+/* Challenge 9 */
+#c9 .div1 {
+  position: relative;
+  width: 150px;
+  height: 300px;
+}
+
+#c9 .div2 {
+  position: absolute;
+  right: 25px;
+  top: 0px;
+}
+
+#c9 .div3 {
+  position: absolute;
+  right: 25px;
+  bottom: 0px;
+}
+
+/* Challenge 10 */
+#c10 .div1 {
+  position: relative;
+  width: 300px;
+  height: 150px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#c10 .flex {
+  position: absolute;
+  display: flex;
+  width: 250px;
+  top: 25px;
+  left: 25px;
+  justify-content: space-between;
+}
+
+/* Challenge 11 */
+#c11 .div1 {
+  position: relative;
+  width: 150px;
+  height: 300px;
+}
+
+#c11 .div2 {
+  position: absolute;
+  width: 120px;
+  height: 150px;
+  bottom: 0px;
+  right: 0px;
+}
+
+#c11 .div3 {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+/* Challenge 12 */
+#c12 .div1 {
+  position: relative;
+  width: 150px;
+  height: 300px;
+}
+
+#c12 .div2 {
+  position: absolute;
+  width: 120px;
+  height: 150px;
+  bottom: 0px;
+  right: -60px;
+}
+
+#c12 .div3 {
+  position: absolute;
+  bottom: -50px;
+  left: -40px;
+}
+
+/* Challenge 13 */
+
+#c13 .div1 {
+  position: relative;
+}
+
+#c13 .div1 div {
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+}
+
+/* Challenge 14 */
+#c14 {
+  position: relative;
+}
+
+#c14 .div1 {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  right: 0px;
+}
+
+#c14 .div2 {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+}
+
+/* Challenge 14 */
+
+#c15 {
+  position: relative;
+}
+
+#c15 > div {
+  width: 90vw;
+  height: 350px;
+  position: absolute;
+}
+
+#c15 .div1,
+#c15 .div4 {
+  width: 200px;
+  height: 200px;
+}
+
+#c15 .div2 {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+#c15 .div3 {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+}
+#c15 .div4 {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
