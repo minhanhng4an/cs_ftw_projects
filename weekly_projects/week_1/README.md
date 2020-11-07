@@ -32,5 +32,9 @@ _Home Page - max-width: 1000px_
 ![home-1000-1](assets/previews/home-1000-1.png)
 ![home-1000-2](assets/previews/home-1000-2.png)
 
+_Home Page - Mobile_
+![home-mobile-1](assets/previews/home-mobile-1.png)
+![home-mobile-2](assets/previews/home-mobile-2.png)
+
 _About Me Page - Full Screen_
 ![about](assets/previews/about-full.png)
