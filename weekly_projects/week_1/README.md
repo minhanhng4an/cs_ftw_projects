@@ -6,6 +6,8 @@
 
 ## Project Description
 
+> **[See page on Netlify](https://mina-portfolio.netlify.app/)**
+
 **Main Idea:**
 
 Creating my own personal digital portfolio to showcase my past projects in Computer Science.
@@ -32,5 +34,3 @@ _Home Page - max-width: 1000px_
 
 _About Me Page - Full Screen_
 ![about](assets/previews/about-full.png)
-
-> **[See page on Netlify]()**
