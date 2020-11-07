@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Home</title>
+  </head>
+  <body>
+    <header>
+      <p class="welcome">My Digital Porfolio</p>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+      </nav>
+    </header>
+    <main class="main-home">
+      <div class="large-portrait">
+        <img src="assets/portrait.png" alt="" class="portrait" />
+        <div class="about-box">
+          <p class="hello">Hello!</p>
+          <p class="full-name">Nguyen Minh Anh</p>
+          <p class="title">Data Enthusiast. Curious Learner. Cat Daddy.</p>
+          <br />
+          <p class="description">
+            I spent one year as a Machine Learning Instructor at CoderSchool.
+            Before that I had two years working as a Data Analyst. I am
+            especially interested in leveraging the power of data to solve
+            environmental and social issues.
+          </p>
+          <div class="media-buttons">
+            <a
+              href="https://github.com/minhanhng4an"
+              target="_blank"
+              tarclass="github"
+            >
+              <i class="fab fa-github-square"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/minhanhng/" target="_blank"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+          </div>
+          <a href="#project-section" class="section-navigator">
+            <p class="navigator">Check out my projects!</p>
+            <i class="fas fa-chevron-down navigator-arrow"></i>
+          </a>
+        </div>
+      </div>
+      <div class="project-section" id="project-section">
+        <h1 class="list-header">My Projects</h1>
+        <!-- Project 1 -->
+        <div class="project-list">
+          <a
+            href="https://towardsdatascience.com/building-covid-19-dashboard-with-python-and-tableau-296b0016920f"
+            class="project"
+          >
+            <div class="project-box">
+              <img
+                src="assets/thumbnail_1.png"
+                alt=""
+                class="project-thumbnail"
+              />
+              <div class="project-content">
+                <p class="project-name">Covid-19 Tableau Dashboard</p>
+                <p class="project-description">
+                  Data Processing with Python and Interactive Dashboard with
+                  Tableau.
+                </p>
+              </div>
+
+              <p class="project-tag">#data-viz</p>
+            </div>
+          </a>
+          <!-- Project 2 -->
+          <a
+            href="https://github.com/minhanhng4an/face-recognition"
+            target="_blank"
+            class="project"
+          >
+            <div class="project-box">
+              <img
+                src="assets/thumbnail_2.jpeg"
+                alt=""
+                class="project-thumbnail"
+              />
+              <div class="project-content">
+                <p class="project-name">Face Recognition using YoloV3</p>
+                <p class="project-description">
+                  The Face Recognition application uses computer webcam to
+                  detect faces and classify among trained data.
+                </p>
+              </div>
+
+              <p class="project-tag">#machine-learning</p>
+            </div>
+          </a>
+          <!-- Project 3 -->
+          <a href="https://github.com/minhanhng-cd/discord-bot" class="project">
+            <div class="project-box">
+              <img
+                src="assets/thumbnail_3.jpeg"
+                alt=""
+                class="project-thumbnail"
+              />
+              <div class="project-content">
+                <p class="project-name">Discord Bot</p>
+                <p class="project-description">
+                  Automate student attendance checking and scoring using Discord
+                  & Google Spreadsheet API.
+                </p>
+              </div>
+
+              <p class="project-tag">#automation</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
