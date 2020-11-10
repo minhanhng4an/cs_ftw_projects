@@ -1,5 +1,5 @@
 console.log(`"Coder" + "School" = ${"Coder" + "School"}`);
-console.log(`10 + 24 = ${10 + 24}`);
+console.log(`"10" + "24" = ${"10" + "24}}`);
 console.log(`"Hello" + " " + 2021 = ${"Hello" + " " + 2021}`);
 console.log(`1 + 2 * 3 = ${1 + 2 * 3}`);
 console.log(`(1 + 3) ** 2 = ${(1 + 3) ** 2}`);
