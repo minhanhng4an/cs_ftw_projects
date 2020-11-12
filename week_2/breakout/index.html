@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Breakout</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="bg-image"></div>
+    <div id="welcome">
+      <div class="welcome-section">
+        <p class="welcome-header">Tutorial</p>
+        <ul id="instructions">
+          <li>Break all blocks with the ball to win</li>
+          <li>Some blocks might take multiple hits to break</li>
+          <li>Use Arrow Key Left & Right to control the paddle</li>
+          <li>Use Arrow Key Up & Down to increase/decrease Game Speed</li>
+        </ul>
+      </div>
+      <div class="welcome-section">
+        <p class="welcome-header">Select Difficulty</p>
+        <div id="difficulty-buttons"></div>
+      </div>
+    </div>
+    <div id="game">
+      <div id="header">
+        <p id="title">Breakout Game</p>
+        <p id="subtitle">with Uku & Lele</p>
+      </div>
+
+      <div id="game-area">
+        <canvas id="game-canvas" width="900" height="600"></canvas>
+      </div>
+
+      <div id="info">
+        <p id="life">Life: 0</p>
+        <p id="difficulty">Difficulty: 1</p>
+        <p id="game-speed">Game Speed: 2</p>
+        <p id="score">Score: 0</p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
