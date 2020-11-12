@@ -19,7 +19,7 @@ var y = canvas.height / 2;
 var dx = 2;
 var dy = 2;
 
-var ballRadius = 20;
+var ballRadius = 17;
 
 // Paddle
 var paddleWidth = 150;
@@ -35,8 +35,8 @@ var downPressed = false;
 var bricks = [];
 var brickRowCount = 3;
 var brickColumnCount = 5;
-var brickWidth = 160;
-var brickHeight = 50;
+var brickWidth = 140;
+var brickHeight = 40;
 var brickPadding = 10;
 var brickOffsetTop = 30;
 var brickOffsetLeft = 30;
