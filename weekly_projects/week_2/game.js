@@ -1,4 +1,4 @@
-const debug = true; // Toggle Debug Mode
+const debug = false; // Toggle Debug Mode
 
 let win = false; // Track winning status
 let score = 0;
