@@ -6,13 +6,13 @@
 
 ## Project Description
 
-> **[See page on Netlify]()**
+> **[See page on Netlify](https://cuddly-charmander.netlify.app/)**
 
 **Name: Cuddly Charmander - The Amazing Coding Adventure**
 
 **Main Idea:**
 
-**Building my own video game based on _Nam, the Monster Hunter_ Game made by Charles Lee.**
+**Building my own video game based on [_Nam, the Monster Hunter_](https://github.com/coderschool/canvas_game_starter) Game made by Charles Lee.**
 
 Unlike Charles' Game, this game is divided into 20 levels, each requires 15 seconds to complete. In order to complete a level, the player has to control Charmander to defeat monsters around the map using his Fireballs, while avoiding to get hit by them. Charmander will encounter more challening enemies as he progresses, but he will also gain powerful upgrades to aid his adventure.
 
@@ -48,6 +48,7 @@ If the player fails to complete any level within the time limit, they will have 
 - [x] All game objects are organized and structured using Class
 - [x] Project is documented and published on Github
 - [x] The game can be played from the Internet (Netlify)
+- [ ] Preload images for better performance on deployed server
 - [ ] High scores are saved to a server
 - [ ] Have at least three code reviews from others.
 
