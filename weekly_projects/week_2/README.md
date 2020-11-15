@@ -48,7 +48,7 @@ If the player fails to complete any level within the time limit, they will have 
 - [x] All game objects are organized and structured using Class
 - [x] Project is documented and published on Github
 - [x] The game can be played from the Internet (Netlify)
-- [ ] Preload images for better performance on deployed server
+- [ ] **Preload images for better performance on deployed server**
 - [ ] High scores are saved to a server
 - [ ] Have at least three code reviews from others.
 
