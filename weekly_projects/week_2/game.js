@@ -961,6 +961,19 @@ function setupKeyboardListeners() {
     "keydown",
     function (e) {
       keysPressed[e.key] = true;
+
+      if (
+        [
+          "ArrowUp",
+          "ArrowDown",
+          "Arrowleft",
+          "ArrowRight",
+          "Spacebar",
+          " ",
+        ].includes(e.key)
+      ) {
+        e.preventDefault(); // Disable screen scrolling with keys
+      }
     },
     false
   );
