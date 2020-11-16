@@ -1,5 +1,4 @@
-console.log("Welcome to my game");
-const debug = false; // Toggle Debug Mode
+const debug = true; // Toggle Debug Mode
 
 let win = false; // Track winning status
 let score = 0;
@@ -66,8 +65,8 @@ let LEVEL_DESIGN;
 if (debug) {
   LEVEL_DESIGN = {
     enemyCommon: [3, 4, 4, 4, 4, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5],
-    enemyHeavy: [0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    enemyMove: [3, 3, 3, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    enemyHeavy: [1, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    enemyMove: [2, 3, 3, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     block: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   };
 } else {
@@ -319,7 +318,6 @@ let allImages = [
   "enemy-3-move-down.png",
   "char-2-move-up.png",
   "title.png",
-  ".DS_Store",
   "char-3-fly-right.png",
   "enemy-1-dead.png",
   "special-left.png",
@@ -556,9 +554,6 @@ class Character {
   loadImage(source) {
     this.image = new Image();
     this.image.src = source;
-    this.image.onload = function () {
-      this.imageReady = true;
-    };
   }
 
   move(direction, type = "enemy", action = "move") {
@@ -687,9 +682,6 @@ class Block {
 
   loadImage() {
     this.image = new Image();
-    this.image.onload = function () {
-      this.imageReady = true;
-    };
     this.image.src = this.spritesheet.source;
   }
 }
@@ -1362,20 +1354,17 @@ function render() {
   // Enemies
   for (let i = 0; i < enemies.length; i++) {
     let enemy = enemies[i];
-    if (enemy.imageReady) {
-      game.ctx.drawImage(
-        enemy.image,
-        (enemy.frameIndex * enemy.width) / enemy.numberOfFrames,
-        0,
-        enemy.width / enemy.numberOfFrames,
-        enemy.height,
-        enemy.x,
-        enemy.y,
-        enemy.width / enemy.numberOfFrames,
-        enemy.height
-      );
-    }
-
+    game.ctx.drawImage(
+      enemy.image,
+      (enemy.frameIndex * enemy.width) / enemy.numberOfFrames,
+      0,
+      enemy.width / enemy.numberOfFrames,
+      enemy.height,
+      enemy.x,
+      enemy.y,
+      enemy.width / enemy.numberOfFrames,
+      enemy.height
+    );
     if (debug) {
       game.ctx.beginPath();
       game.ctx.rect(
@@ -1391,9 +1380,7 @@ function render() {
   // Shoots
   for (let i = 0; i < shoots.length; i++) {
     let shoot = shoots[i];
-    if (shoot.imageReady) {
-      game.ctx.drawImage(shoot.image, shoot.x, shoot.y);
-    }
+    game.ctx.drawImage(shoot.image, shoot.x, shoot.y);
     // DEBUG MODE
     if (debug) {
       game.ctx.beginPath();
@@ -1403,19 +1390,17 @@ function render() {
   }
 
   // Charmander
-  if (charmander.imageReady) {
-    game.ctx.drawImage(
-      charmander.image,
-      (charmander.frameIndex * charmander.width) / charmander.numberOfFrames,
-      0,
-      charmander.width / charmander.numberOfFrames,
-      charmander.height,
-      charmander.x,
-      charmander.y,
-      charmander.width / charmander.numberOfFrames,
-      charmander.height
-    );
-  }
+  game.ctx.drawImage(
+    charmander.image,
+    (charmander.frameIndex * charmander.width) / charmander.numberOfFrames,
+    0,
+    charmander.width / charmander.numberOfFrames,
+    charmander.height,
+    charmander.x,
+    charmander.y,
+    charmander.width / charmander.numberOfFrames,
+    charmander.height
+  );
 
   // DEBUG MODE
   if (debug) {
