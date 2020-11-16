@@ -683,6 +683,9 @@ class Block {
 
   loadImage() {
     this.image = new Image();
+    this.image.onload = function () {
+      this.imageReady = true;
+    };
     this.image.src = this.spritesheet.source;
   }
 }
@@ -697,6 +700,9 @@ class Shoot {
 
   loadImage() {
     this.image = new Image();
+    this.image.onload = function () {
+      this.imageReady = true;
+    };
     let direction = this.direction.toLowerCase();
     this.image.src = this.spritesheet[direction].source;
     this.width = this.spritesheet[direction].width;
@@ -1352,17 +1358,20 @@ function render() {
   // Enemies
   for (let i = 0; i < enemies.length; i++) {
     let enemy = enemies[i];
-    game.ctx.drawImage(
-      enemy.image,
-      (enemy.frameIndex * enemy.width) / enemy.numberOfFrames,
-      0,
-      enemy.width / enemy.numberOfFrames,
-      enemy.height,
-      enemy.x,
-      enemy.y,
-      enemy.width / enemy.numberOfFrames,
-      enemy.height
-    );
+    if (enemy.imageReady) {
+      game.ctx.drawImage(
+        enemy.image,
+        (enemy.frameIndex * enemy.width) / enemy.numberOfFrames,
+        0,
+        enemy.width / enemy.numberOfFrames,
+        enemy.height,
+        enemy.x,
+        enemy.y,
+        enemy.width / enemy.numberOfFrames,
+        enemy.height
+      );
+    }
+
     if (debug) {
       game.ctx.beginPath();
       game.ctx.rect(
@@ -1378,7 +1387,9 @@ function render() {
   // Shoots
   for (let i = 0; i < shoots.length; i++) {
     let shoot = shoots[i];
-    game.ctx.drawImage(shoot.image, shoot.x, shoot.y);
+    if (shoot.imageReady) {
+      game.ctx.drawImage(shoot.image, shoot.x, shoot.y);
+    }
     // DEBUG MODE
     if (debug) {
       game.ctx.beginPath();
@@ -1388,17 +1399,19 @@ function render() {
   }
 
   // Charmander
-  game.ctx.drawImage(
-    charmander.image,
-    (charmander.frameIndex * charmander.width) / charmander.numberOfFrames,
-    0,
-    charmander.width / charmander.numberOfFrames,
-    charmander.height,
-    charmander.x,
-    charmander.y,
-    charmander.width / charmander.numberOfFrames,
-    charmander.height
-  );
+  if (charmander.imageReady) {
+    game.ctx.drawImage(
+      charmander.image,
+      (charmander.frameIndex * charmander.width) / charmander.numberOfFrames,
+      0,
+      charmander.width / charmander.numberOfFrames,
+      charmander.height,
+      charmander.x,
+      charmander.y,
+      charmander.width / charmander.numberOfFrames,
+      charmander.height
+    );
+  }
 
   // DEBUG MODE
   if (debug) {
