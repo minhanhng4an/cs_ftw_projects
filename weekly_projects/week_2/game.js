@@ -925,6 +925,7 @@ function loadImages(preload) {
       let preImg = new Image();
       preImg.src = "images/" + allImages[i];
     }
+    console.log("Preload completed!");
   } else {
     game.loadImage("images/background.png");
 
