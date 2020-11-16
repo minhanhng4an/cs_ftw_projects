@@ -311,6 +311,58 @@ const gameMenu = {
   },
 };
 
+let allImages = [
+  "shadow-ball-left.png",
+  "enemy-2-move-left.png",
+  "char-3-fly-left.png",
+  "enemy-3-move-down.png",
+  "char-2-move-up.png",
+  "title.png",
+  ".DS_Store",
+  "char-3-fly-right.png",
+  "enemy-1-dead.png",
+  "special-left.png",
+  "char-3-fly-up.png",
+  "char-1-stun.png",
+  "char-3-move-down.png",
+  "char-1-move-left.png",
+  "enemy-3-move-right.png",
+  "char-1-move-up.png",
+  "enemy-2-move-up.png",
+  "special-up.png",
+  "enemy-2-move-right.png",
+  "shoot-down.png",
+  "char-2-move-left.png",
+  "background.png",
+  "enemy-3-sleep.png",
+  "enemy-2-dead.png",
+  "enemy-3-dead.png",
+  "block.jpg",
+  "char-1-move-down.png",
+  "char-3-move-left.png",
+  "char-2-move-right.png",
+  "char-3-move-up.png",
+  "special-down.png",
+  "char-2-move-down.png",
+  "shoot-up.png",
+  "shoot-left.png",
+  "char-3-move-right.png",
+  "shadow-ball-right.png",
+  "enemy-2-move-down.png",
+  "shadow-ball-down.png",
+  "char-1-move-right.png",
+  "shoot-right.png",
+  "enemy-3-move-up.png",
+  "special-right.png",
+  "shadow-ball-up.png",
+  "char-2-stun.png",
+  "char-3-stun.png",
+  "char-3-fly-down.png",
+  "enemy-1-move-down.png",
+  "enemy-3-move-left.png",
+  "bg.jpg",
+];
+
 function getRandomInt(end, start) {
   return Math.round(Math.random() * (end - start) + start);
 }
@@ -865,28 +917,39 @@ function initGame(level) {
   }
 }
 
-function loadImages() {
-  game.loadImage("images/background.png");
-
-  if (stun) {
-    charmander.loadImage(charDesign[charmander.level].spritesheet.stun.source);
-  } else if (fly) {
-    charmander.loadImage(charDesign[charmander.level].spritesheet.fly.source);
-  } else {
-    charmander.loadImage(charDesign[charmander.level].spritesheet.move.source);
-  }
-
-  for (var i = 0; i < enemies.length; i++) {
-    let enemy = enemies[i];
-    enemy.loadImage(enemy.spritesheet.move.source);
-    // Change Heavy enemies to sleep
-    if (enemy.level === 3) {
-      enemy.sleep();
+function loadImages(preload) {
+  if (preload) {
+    for (let i = 0; i < allImages.length; i++) {
+      let preImg = new Image();
+      preImg.src = "images/" + allImages[i];
     }
-  }
+  } else {
+    game.loadImage("images/background.png");
 
-  for (var i = 0; i < blocks.length; i++) {
-    blocks[i].loadImage();
+    if (stun) {
+      charmander.loadImage(
+        charDesign[charmander.level].spritesheet.stun.source
+      );
+    } else if (fly) {
+      charmander.loadImage(charDesign[charmander.level].spritesheet.fly.source);
+    } else {
+      charmander.loadImage(
+        charDesign[charmander.level].spritesheet.move.source
+      );
+    }
+
+    for (var i = 0; i < enemies.length; i++) {
+      let enemy = enemies[i];
+      enemy.loadImage(enemy.spritesheet.move.source);
+      // Change Heavy enemies to sleep
+      if (enemy.level === 3) {
+        enemy.sleep();
+      }
+    }
+
+    for (var i = 0; i < blocks.length; i++) {
+      blocks[i].loadImage();
+    }
   }
 }
 
@@ -1572,6 +1635,7 @@ requestAnimationFrame =
   w.mozRequestAnimationFrame;
 
 // Let's play this game!
+loadImages(true);
 initGame(1);
 loadImages();
 setupKeyboardListeners();
