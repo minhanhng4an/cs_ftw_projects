@@ -552,6 +552,12 @@ class Character {
 
   loadImage(source) {
     this.image = new Image();
+
+    let obj = this;
+    this.image.onload = function () {
+      obj.imageLoaded = true;
+    };
+
     this.image.src = source;
   }
 
@@ -681,6 +687,12 @@ class Block {
 
   loadImage() {
     this.image = new Image();
+
+    let obj = this;
+    this.image.onload = function () {
+      obj.imageLoaded = true;
+    };
+
     this.image.src = this.spritesheet.source;
   }
 }
@@ -695,9 +707,12 @@ class Shoot {
 
   loadImage() {
     this.image = new Image();
+
+    let obj = this;
     this.image.onload = function () {
-      this.imageReady = true;
+      obj.imageLoaded = true;
     };
+
     let direction = this.direction.toLowerCase();
     this.image.src = this.spritesheet[direction].source;
     this.width = this.spritesheet[direction].width;
@@ -1351,79 +1366,89 @@ function render() {
   );
   game.ctx.globalAlpha = 1;
 
-  // Blocks
-  for (let i = 0; i < blocks.length; i++) {
-    let block = blocks[i];
-    game.ctx.drawImage(block.image, block.x, block.y);
+  let blocksImageReady = blocks
+    .map((x) => x.imageLoaded)
+    .every((x) => x === true);
+  let enemiesImageReady = enemies
+    .map((x) => x.imageLoaded)
+    .every((x) => x === true);
+  let charmanderReady = charmander.imageLoaded;
 
-    // DEBUG MODE
-    if (debug) {
-      game.ctx.beginPath();
-      game.ctx.rect(block.x, block.y, block.width, block.height);
-      game.ctx.stroke();
+  if (blocksImageReady && enemiesImageReady && charmanderReady) {
+    // Blocks
+    for (let i = 0; i < blocks.length; i++) {
+      let block = blocks[i];
+      game.ctx.drawImage(block.image, block.x, block.y);
+
+      // DEBUG MODE
+      if (debug) {
+        game.ctx.beginPath();
+        game.ctx.rect(block.x, block.y, block.width, block.height);
+        game.ctx.stroke();
+      }
     }
-  }
-  // Enemies
-  for (let i = 0; i < enemies.length; i++) {
-    let enemy = enemies[i];
-    game.ctx.drawImage(
-      enemy.image,
-      (enemy.frameIndex * enemy.width) / enemy.numberOfFrames,
-      0,
-      enemy.width / enemy.numberOfFrames,
-      enemy.height,
-      enemy.x,
-      enemy.y,
-      enemy.width / enemy.numberOfFrames,
-      enemy.height
-    );
-    if (debug) {
-      game.ctx.beginPath();
-      game.ctx.rect(
+    // Enemies
+    for (let i = 0; i < enemies.length; i++) {
+      let enemy = enemies[i];
+      game.ctx.drawImage(
+        enemy.image,
+        (enemy.frameIndex * enemy.width) / enemy.numberOfFrames,
+        0,
+        enemy.width / enemy.numberOfFrames,
+        enemy.height,
         enemy.x,
         enemy.y,
         enemy.width / enemy.numberOfFrames,
         enemy.height
       );
-      game.ctx.stroke();
+      if (debug) {
+        game.ctx.beginPath();
+        game.ctx.rect(
+          enemy.x,
+          enemy.y,
+          enemy.width / enemy.numberOfFrames,
+          enemy.height
+        );
+        game.ctx.stroke();
+      }
     }
-  }
 
-  // Shoots
-  for (let i = 0; i < shoots.length; i++) {
-    let shoot = shoots[i];
-    game.ctx.drawImage(shoot.image, shoot.x, shoot.y);
-    // DEBUG MODE
-    if (debug) {
-      game.ctx.beginPath();
-      game.ctx.rect(shoot.x, shoot.y, shoot.width, shoot.height);
-      game.ctx.stroke();
+    // Shoots
+    for (let i = 0; i < shoots.length; i++) {
+      let shoot = shoots[i];
+      game.ctx.drawImage(shoot.image, shoot.x, shoot.y);
+      // DEBUG MODE
+      if (debug) {
+        game.ctx.beginPath();
+        game.ctx.rect(shoot.x, shoot.y, shoot.width, shoot.height);
+        game.ctx.stroke();
+      }
     }
-  }
 
-  // Charmander
-  game.ctx.drawImage(
-    charmander.image,
-    (charmander.frameIndex * charmander.width) / charmander.numberOfFrames,
-    0,
-    charmander.width / charmander.numberOfFrames,
-    charmander.height,
-    charmander.x,
-    charmander.y,
-    charmander.width / charmander.numberOfFrames,
-    charmander.height
-  );
-
-  // DEBUG MODE
-  if (debug) {
-    game.ctx.beginPath();
-    game.ctx.rect(
+    // Charmander
+    game.ctx.drawImage(
+      charmander.image,
+      (charmander.frameIndex * charmander.width) / charmander.numberOfFrames,
+      0,
+      charmander.width / charmander.numberOfFrames,
+      charmander.height,
       charmander.x,
       charmander.y,
       charmander.width / charmander.numberOfFrames,
       charmander.height
     );
-    game.ctx.stroke();
+
+    // DEBUG MODE
+    if (debug) {
+      game.ctx.beginPath();
+      game.ctx.rect(
+        charmander.x,
+        charmander.y,
+        charmander.width / charmander.numberOfFrames,
+        charmander.height
+      );
+      game.ctx.stroke();
+    }
   }
 
   game.ctx.font = "20px Roboto, sans-serif";
