@@ -1,3 +1,4 @@
+console.log("Welcome to my game");
 const debug = false; // Toggle Debug Mode
 
 let win = false; // Track winning status
@@ -555,6 +556,9 @@ class Character {
   loadImage(source) {
     this.image = new Image();
     this.image.src = source;
+    this.image.onload = function () {
+      this.imageReady = true;
+    };
   }
 
   move(direction, type = "enemy", action = "move") {
