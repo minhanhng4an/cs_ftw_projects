@@ -1,26 +1,32 @@
 // API Keys
 const keyWCI = "rp2x6jfDMyj7oYA4gnEaWEiDKN9ItCSnnoi"; // API Key for WorldCoinIndex
-const keyEx = ""; // API Key for Currency Exchange
+const keyEx = "f044bfe7a7ad2f58a9d221133b01b2b5"; // API Key for Currency Exchange
 
 const urlWCI = `https://www.worldcoinindex.com/apiservice/v2getmarkets?key=${keyWCI}&fiat=vnd`; // API URL for for WorldCoinIndex
-const urlEx = ``; // API URL for Currency Exchange
+const urlEx = `http://data.fixer.io/api/latest?access_key=${keyEx}`; // API URL for Currency Exchange
 
 // 1. Helper Functions
 // 1a. Get a list of available currencies from Currency Exchange API
-function getCurrency() {
-  // YOUR CODE HERE
+async function getCurrency() {
+  const response = await fetch(urlEx);
+  const data = await response.json();
 
-  return arr; // Array containing multiple objects, each has 2 properties: currency name and its exchange rate to USD
-  // Object format:
-  // {name: "CurrencyName",
-  //  exchangeRate: exchangeRate}
+  // Convert to USD base
+  const usdRate = data.rates.USD;
+
+  for (const c in data.rates) {
+    data.rates[c] /= usdRate;
+  }
+
+  return data.rates; // Object - Each item is a currency code & its exchange rate to USD
 }
 
 // 1b. Get a list of all Crytocurrencies from WorldCoinIndex API
-function getCrypto() {
-  // YOUR CODE HERE
+async function getCrypto() {
+  const response = await fetch(urlWCI);
+  const data = await response.json();
 
-  return; // Array containing multiple objects, each has currency name, price in USD and liquidity rate
+  return data.Markets[0]; // Array containing multiple objects, each has currency name, price in USD and liquidity rate
   // Object format:
   // {name: "CurrencyName",
   //  price: price,
@@ -32,12 +38,36 @@ let currencies = getCurrency(); // Get data from Currency Exchange API
 
 // 2a. Add title, other instructions (if needed to document (html file))
 // YOUR CODE HERE
+let title = document.createElement("p");
+title.classList = "col";
+title.innerHTML = "Cryptocurrency Exchange";
+document.getElementById("title-section").append(title);
 
 // 2b. Get the list of currency names
-let currencyNames; // YOUR CODE HERE
+let getCurrencyNames = async () => {
+  return Object.keys(await getCurrency());
+};
 
 // 2c. Put the list of currency names inside a Drop List (Use Bootstrap)
 // YOUR CODE HERE
+let generateDropList = async () => {
+  let currencyNames = await getCurrencyNames();
+  let dropMenu = document.getElementById("currency-dropdown");
+
+  currencyNames.forEach((c) => {
+    option = document.createElement("a");
+    option.classList = "dropdown-item";
+    option.innerHTML = c;
+    option.addEventListener("click", (e) => {
+      let dropMenu = document.getElementById("dropdownMenuButton");
+      dropMenu.innerHTML = e.target.innerHTML;
+    });
+
+    dropMenu.appendChild(option);
+  });
+};
+
+generateDropList();
 
 // 2d. Create Input box for Amount
 // YOUR CODE HERE

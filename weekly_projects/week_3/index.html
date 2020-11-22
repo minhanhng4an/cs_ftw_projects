@@ -4,9 +4,73 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>API</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="main container-fluid">
+      <div class="row" id="title-section"></div>
+      <div class="row" id="input-section">
+        <form action="" class="form-inline">
+          <div class="col">
+            <small for="amount-input">Amount</small>
+            <input
+              type="text"
+              id="amount-input"
+              class="form-control mr-sm-2"
+              placeholder="Amount"
+              aria-label=""
+            />
+          </div>
+
+          <div class="col">
+            <small for="dropdownMenuButton">Currency</small>
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Select Your Currency
+              </button>
+              <div
+                class="dropdown-menu scrollable-menu"
+                id="currency-dropdown"
+                aria-labelledby="dropdownMenuButton"
+              ></div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row" id="submit-section">
+        <button class="btn btn-primary my-2 my-sm-0">Search</button>
+      </div>
+    </div>
+    <!-- Bootstrap -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Scripts -->
     <script src="scripts.js"></script>
   </body>
 </html>
