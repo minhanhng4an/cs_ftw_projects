@@ -1,4 +1,4 @@
-.main {
+#main {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -10,4 +10,35 @@
   height: auto;
   max-height: 200px;
   overflow-x: hidden;
+}
+
+#submit-button {
+  width: 100px;
+}
+
+#dropdownMenuButton {
+  width: 250px;
+}
+
+#submit-section {
+  margin: 25px;
+}
+
+.selection {
+  display: flex;
+}
+
+body {
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6r8Qq0AOI_e5Ybz4S1Mi3p9O0m1jD6SEsBQ&usqp=CAU);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  /* background */
+}
+
+/* .navigations {
+  width: 300px;
+} */
+
+.next-prev {
+  width: 100px;
 }

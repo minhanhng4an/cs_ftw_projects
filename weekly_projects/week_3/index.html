@@ -13,12 +13,12 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="main container-fluid">
+    <div class="container-fluid" id="main">
       <div class="row" id="title-section"></div>
       <div class="row" id="input-section">
         <form action="" class="form-inline">
           <div class="col">
-            <small for="amount-input">Amount</small>
+            <small for="amount-input" id="amount-label">Amount</small>
             <input
               type="text"
               id="amount-input"
@@ -29,7 +29,7 @@
           </div>
 
           <div class="col">
-            <small for="dropdownMenuButton">Currency</small>
+            <small for="dropdownMenuButton" id="currency-label">Currency</small>
             <div class="dropdown">
               <button
                 class="btn btn-secondary dropdown-toggle"
@@ -51,7 +51,9 @@
         </form>
       </div>
       <div class="row" id="submit-section">
-        <button class="btn btn-primary my-2 my-sm-0">Search</button>
+        <button class="btn btn-primary my-2 my-sm-0" id="submit-button">
+          Convert
+        </button>
       </div>
     </div>
     <!-- Bootstrap -->
