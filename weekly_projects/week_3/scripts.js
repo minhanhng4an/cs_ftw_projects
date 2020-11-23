@@ -1,9 +1,9 @@
 // API Keys
 const keyWCI = "rp2x6jfDMyj7oYA4gnEaWEiDKN9ItCSnnoi"; // API Key for WorldCoinIndex
-const keyEx = "f044bfe7a7ad2f58a9d221133b01b2b5"; // API Key for Currency Exchange
+const keyEx = "7b0790b6e61992437d55a39622abdbcb"; // API Key for Currency Exchange
 
 const urlWCI = `https://www.worldcoinindex.com/apiservice/v2getmarkets?key=${keyWCI}&fiat=vnd`; // API URL for for WorldCoinIndex
-const urlEx = `https://data.fixer.io/api/latest?access_key=${keyEx}`; // API URL for Currency Exchange
+const urlEx = `http://data.fixer.io/api/latest?access_key=${keyEx}`; // API URL for Currency Exchange
 
 let selectedCurrency;
 let selectedAmount;
