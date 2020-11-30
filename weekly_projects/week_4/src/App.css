@@ -32,6 +32,7 @@ p {
 img,
 svg {
   vertical-align: middle;
+  padding: 0px !important;
   /* max-width: -webkit-fill-available; */
 }
 h2 {

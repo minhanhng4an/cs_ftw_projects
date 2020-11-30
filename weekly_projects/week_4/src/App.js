@@ -90,11 +90,13 @@ function App() {
             show={showPagBar}
           />
         </div>
-        {loading ? (
-          <ClipLoader color="#f86c6b" size={150} loading={true} />
-        ) : (
-          <IssueList itemList={issues} />
-        )}
+        <div className="d-flex flex-column align-items-center">
+          {loading ? (
+            <ClipLoader color="#f86c6b" size={150} loading={true} />
+          ) : (
+            <IssueList itemList={issues} />
+          )}
+        </div>
         <div className="d-flex flex-column align-items-center">
           {errorMessage && (
             <Alert variant="danger" className="mt-4">
