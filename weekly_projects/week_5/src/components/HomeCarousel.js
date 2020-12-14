@@ -11,6 +11,7 @@ const HomeCarousel = ({
   return (
     <Carousel id="trending">
       {!loading &&
+        conf &&
         movies.map((movie) => (
           <Carousel.Item
             key={movie.id}

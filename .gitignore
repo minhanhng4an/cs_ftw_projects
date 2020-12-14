@@ -1,2 +1,5 @@
 .DS_Store
 git_testing
+
+# Local Netlify folder
+.netlify

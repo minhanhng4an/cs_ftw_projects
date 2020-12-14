@@ -20,7 +20,8 @@ const HomePage = () => {
   const [availableGenreIds, setAvailableGenreIds] = useState(new Set());
   const [availableGenres, setAvailableGenres] = useState([]);
 
-  const highlightMovie = movies.filter((movie) => movie.id === highlightId)[0];
+  const highlightMovie =
+    movies && movies.filter((movie) => movie.id === highlightId)[0];
 
   const handleScroll = () => {
     if (window.scrollY > 400) {
@@ -30,96 +31,79 @@ const HomePage = () => {
     }
   };
 
-  const getData = async (service, endpoint) => {
-    try {
-      const response = await service.get(endpoint);
-      const data = await response.data;
-
-      if (response.status === 200) {
-        return data;
-      } else {
-        setErrorMsg(`FETCH MOVIES ERROR: ${data.message}`);
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const data = await api.get("/trending/movies/week");
+        const config = await api.get("/configuration");
+        setMovies(data.results);
+        setConf(config.images);
+      } catch (error) {
+        setErrorMsg(`FETCH MOVIES ERROR: ${error.message}`);
       }
-    } catch (error) {
-      setErrorMsg(`FETCH MOVIES ERROR: ${error.message}`);
-    }
-    return;
-  };
-
-  const fetchGenres = useCallback(async () => {
-    setLoading(true);
-    const data = await getData(api, "/genre/movie/list");
-    setGenres(data.genres);
-
-    setAvailableGenreIds(
-      movies
-        .map((movie) => movie.genre_ids)
-        .reduce(
-          (accumulator, currentValue) =>
-            new Set([...accumulator, ...currentValue]),
-          new Set()
-        )
-    );
-
-    setLoading(false);
-  }, [movies]);
-
-  const fetchTrailer = useCallback(async () => {
-    setLoadingHighlight(true);
-
-    const data = await getData(api, `/movie/${highlightId}/videos`);
-
-    try {
-      const trailers = data.results.filter((video) =>
-        video.type.toLowerCase().includes("trailer")
-      );
-
-      setHighlightTrailer(trailers[trailers.length - 1].key);
-    } catch {
-      setHighlightTrailer(undefined);
-    }
-
-    setLoadingHighlight(false);
-  }, [highlightId]);
-
-  const fetchData = useCallback(async () => {
-    setLoading(true);
-
-    const data = await getData(api, "/trending/movies/week");
-    setMovies(data.results);
-
-    setLoading(false);
+      setLoading(false);
+    };
+    fetchData();
   }, []);
 
-  const fetchConfig = useCallback(async () => {
-    setLoading(true);
+  useEffect(() => {
+    const fetchTrailer = async () => {
+      if (!highlightId) return;
+      setLoadingHighlight(true);
 
-    const data = await getData(api, "/configuration");
-    setConf(data.images);
+      try {
+        const data = await api.get(`/movie/${highlightId}/videos`);
+        try {
+          const trailers = data.results.filter((video) =>
+            video.type.toLowerCase().includes("trailer")
+          );
+          setHighlightTrailer(trailers[trailers.length - 1].key);
+        } catch {
+          setHighlightTrailer(undefined);
+        }
+      } catch (error) {
+        setErrorMsg(`FETCH TRAILER ERROR: ${error.message}`);
+      }
 
-    setLoading(false);
+      setLoadingHighlight(false);
+    };
+    fetchTrailer();
+  }, [highlightId]);
+
+  useEffect(() => {
+    const fetchGenres = async () => {
+      setLoading(true);
+
+      try {
+        const data = await api.get("/genre/movie/list");
+        console.log("..", data.genres);
+        setGenres(data.genres);
+      } catch (error) {
+        setErrorMsg(`FETCH GENRES ERROR: ${error.message}`);
+      }
+
+      movies &&
+        setAvailableGenreIds(
+          movies
+            .map((movie) => movie.genre_ids)
+            .reduce(
+              (accumulator, currentValue) =>
+                new Set([...accumulator, ...currentValue]),
+              new Set()
+            )
+        );
+
+      setLoading(false);
+    };
+    fetchGenres();
   }, [movies]);
 
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
-  useEffect(() => {
-    fetchConfig();
-  }, [fetchConfig]);
-
-  useEffect(() => {
-    fetchTrailer();
-  }, [fetchTrailer]);
-
-  useEffect(() => {
-    fetchGenres();
-  }, [fetchGenres]);
-
-  useEffect(() => {
-    setAvailableGenres(
-      genres.filter((genre) => availableGenreIds.has(genre.id))
-    );
+    genres &&
+      setAvailableGenres(
+        genres.filter((genre) => availableGenreIds.has(genre.id))
+      );
   }, [genres, availableGenreIds]);
 
   useEffect(() => {
@@ -134,13 +118,15 @@ const HomePage = () => {
       window.scrollTo(window.scrollX, window.scrollY - 50);
     });
     return () => {
-      window.removeEventListener("hashchange");
+      window.removeEventListener("hashchange", function () {
+        window.scrollTo(window.scrollX, window.scrollY - 50);
+      });
     };
   }, []);
 
   return (
     <>
-      {!loading && (
+      {!loading && conf && (
         <>
           <PublicNavbar availableGenres={availableGenres} />
 
